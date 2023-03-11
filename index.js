@@ -58,10 +58,10 @@ connection.connect((err) => {
   });
 
 app.post("/create", (req, res) => {
-    const {sn, section, sub_section, authority, won} = req.body;
+    const {section, sub_section, authority, won} = req.body;
 
-    const sql = 'INSERT INTO blogs (sn, section, sub_section, authority, won) VALUES (?,?,?,?,?)'
-    connection.query(sql, [sn, section, sub_section, authority, won], (err, result) => {
+    const sql = 'INSERT INTO blogs (section, sub_section, authority, won) VALUES (?,?,?,?)'
+    connection.query(sql, [section, sub_section, authority, won], (err, result) => {
         if (err) {
             console.log('Error inserting record into MySQL: ' + err.message);
             return res.status(500).json({ error: 'Error inserting record into MySQL!' });
